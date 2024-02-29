@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giveaway Timer</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+    body {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: grey;
+        overflow: hidden;
+      }
+      
+      .timer-container {
+        text-align: center;
+        justify-content: center;
+        margin: 0 10px;
+        color: rgba(16, 2, 96, 0.806);
+        align-items: center;
+      }
+      #be {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      
+      .timer-label {
+        font-weight: bold;
+      }
+      
+      .timer-box {
+        padding: 5px 10px;
+        border: 2px solid rgba(16, 2, 96, 0.806);
+        border-radius: 20px;
+      }
+      img {
+        height: 500px;
+        border-radius: 30px;
+        width: 600px;
+        margin: 30px;
+      }
+      .container {
+        display: flex;
+        text-align: center;
+        gap: 40px;
+      }
+      #ti {
+        display: flex;
+        justify-content: center;
+      }
+      #DATE {
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        color: rgba(16, 2, 96, 0.806);
+        font-size: 20px;
+      }
+      
+      button {
+        border-radius: 5px;
+        background-color: rgb(12, 12, 86);
+        color: aliceblue;
+      }
+      
+      h1 {
+        color: rgb(11, 11, 85);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      
+      .bb {
+        background-color: rgb(255, 194, 204);
+      }
+      </style>
+
+  </head>
+  <body>
+
+    <div class="container">
+      <section>
+        <img src="iphone 15 image.jpeg" alt="image">
+      </section>
+
+      <section id="be">
+        <br /><br /><br />
+        <h1>IPHONE GIVEAWAY</h1>
+        <br />
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias,
+        deleniti adipisci expedita ipsam, optio mollitia tempora, rem eos vero
+        velit iste nam est saepe sapiente pariatur sunt placeat repellat
+        corporis?
+        <br />
+        <div id="DATE">OFFER ENDS IN:</div>
+       <br /><br /><br /><br /><br /><br /><br />
+        <div id="ti">
+          <div class="timer-container">
+            <div class="timer-label">DAYS:</div>
+            <div class="timer-box" id="days"></div>
+          </div>
+          <div class="timer-container">
+            <div class="timer-label">HOURS:</div>
+            <div class="timer-box" id="hours"></div>
+          </div>
+          <div class="timer-container">
+            <div class="timer-label">MINUTES:</div>
+            <div class="timer-box" id="minutes"></div>
+          </div>
+          <div class="timer-container">
+            <div class="timer-label">SECONDS:</div>
+            <div class="timer-box" id="seconds"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <a href="./ABOUT.html">
+      <button onclick="">CLICK HERE TO PARTICIPATE</button></a
+    >
+    <script >    (function () {
+        const second = 1000,
+              minute = second * 60,
+              hour = minute * 60,
+              day = hour * 24;
+      
+       
+        let today = new Date(),
+            dd = String(today.getDate()).padStart(2, "0"),
+            mm = String(today.getMonth() + 1).padStart(2, "0"),
+            yyyy = today.getFullYear(),
+            nextYear = yyyy + 1,
+            dayMonth = "03/31/",
+            birthday = dayMonth + yyyy;
+        
+        today = mm + "/" + dd + "/" + yyyy;
+        if (today > birthday) {
+          birthday = dayMonth + nextYear;
+        }
+        //end
+        
+        const countDown = new Date(birthday).getTime(),
+            x = setInterval(function() {    
+      
+              const now = new Date().getTime(),
+                    distance = countDown - now;
+      
+              document.getElementById("days").innerText = Math.floor(distance / (day)),
+                document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+                document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+                document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+      
+              //do something later when date is reached
+              if (distance < 0) {
+                document.getElementById("headline").innerText = "!";
+                document.getElementById("countdown").style.display = "none";
+                document.getElementById("content").style.display = "block";
+                clearInterval(x);
+              }
+              //seconds
+            }, 0)
+        }());
+        </script>
+  </body>
+</html>
+
